@@ -1,13 +1,11 @@
 package com.preppy.JobPreparation.Service.SingleLinkedList;
 
 import com.preppy.JobPreparation.pojos.LinearDataStructureResponse;
-import com.preppy.JobPreparation.pojos.LinkedListNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 @Component
 public class SingleLinkedListVersions {
     @Autowired
