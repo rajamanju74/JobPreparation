@@ -1,6 +1,6 @@
 package com.preppy.JobPreparation.controller;
 
-import com.preppy.JobPreparation.Service.implementation.SequenceService;
+import com.preppy.JobPreparation.Service.SequenceService;
 import com.preppy.JobPreparation.exception.InvalidInputException;
 import com.preppy.JobPreparation.pojos.SequenceResponse;
 import org.springframework.beans.factory.annotation.Autowired;

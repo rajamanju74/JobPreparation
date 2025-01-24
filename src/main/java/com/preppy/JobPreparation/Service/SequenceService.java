@@ -1,27 +1,27 @@
-package com.preppy.JobPreparation.Service.implementation;
+package com.preppy.JobPreparation.Service;
 
 import com.preppy.JobPreparation.exception.InvalidInputException;
 import com.preppy.JobPreparation.pojos.SequenceResponse;
 import com.preppy.JobPreparation.pojos.SequenceType;
 import com.preppy.JobPreparation.utilities.NumberChecksUtil;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.ArrayList;
 import java.util.List;
+/*public abstract class Class1{
 
+}
+
+ */
 @Service
 public class SequenceService {
-    public NumberChecksUtil numberChecksUtil;
 
     public SequenceResponse fibonacciSequence(int number) throws Exception {
         SequenceResponse sequenceResponse = new SequenceResponse();
         sequenceResponse.setSequenceType(SequenceType.FIBONACCI.getSequence());
 
         try{
-            numberChecksUtil.checkInputForNonZeroPositive(number);
+            NumberChecksUtil.checkInputForNonZeroPositive(number);
             if(number>20){
                 throw new Exception("Provide smaller number");
             }
