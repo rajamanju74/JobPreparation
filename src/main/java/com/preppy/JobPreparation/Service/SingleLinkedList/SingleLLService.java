@@ -63,8 +63,6 @@ public class SingleLLService {
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
     }
 
-
-
     public ResponseEntity<LinearDataStructureResponse> deleteFront(){
         if(LinkedListStructure.getHead() == null){
             return new ResponseEntity<>(
@@ -119,10 +117,62 @@ public class SingleLLService {
        response.setList(getAsList(head));
        return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
     }
-/*
+
     public ResponseEntity<LinearDataStructureResponse> deletePosition(int position){
 
-    }*/
+        if(LinkedListStructure.getHead() == null){
+            return new ResponseEntity<>(
+                new LinearDataStructureResponse(
+                        "List is empty", null,
+                        "delete position",
+                        HttpStatusCode.valueOf(400)), HttpStatusCode.valueOf(400));
+
+         }
+
+        List<Integer> llAsList = getAsList(head);
+        if(position > llAsList.size()){
+        return new ResponseEntity<>(
+                new LinearDataStructureResponse(
+                        "Invalid position", llAsList,
+                        "delete position",
+                        HttpStatusCode.valueOf(400)), HttpStatusCode.valueOf(400));
+        }
+
+
+        LinearDataStructureResponse response = new LinearDataStructureResponse();
+
+        response.setOperation("delete position");
+
+        response.setStatusCode(HttpStatusCode.valueOf(200));
+        if(LinkedListStructure.getHead().getNextNode() == null && position == 1){
+            head = null;
+            LinkedListStructure.setHead(null);
+            return new ResponseEntity<>(
+                    new LinearDataStructureResponse(
+                            "List emptied", null,
+                            "delete position",
+                            HttpStatusCode.valueOf(200)), HttpStatusCode.valueOf(200));
+        }else if(position == 1){
+            int value = head.getData();
+            head = head.getNextNode();
+            LinkedListStructure.setHead(head);
+            response.setResponse("Value deleted at position: "+value);
+        }else {
+            LinkedListNode node = head;
+            int count = 1;
+            while (node.getNextNode().getNextNode() != null && count<position-1) {
+                node = node.getNextNode();
+                count++;
+            }
+            logger.info("Reached node is {}",node.getData());
+            int data = node.getNextNode().getData();
+            logger.info("Deleting the value: {}", data);
+            node.setNextNode(node.getNextNode().getNextNode());
+            response.setResponse("Value deleted at position: "+data);
+        }
+        response.setList(getAsList(head));
+        return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
+    }
 
     public List<Integer> getAsList(LinkedListNode node){
         List<Integer> ll = new ArrayList<>();
