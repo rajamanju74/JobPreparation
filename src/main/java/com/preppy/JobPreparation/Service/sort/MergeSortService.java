@@ -85,11 +85,11 @@ public class MergeSortService {
     private void mergeSort(int l, int r){
         if(l>=0 && l<r){
             int mid = l + ((r-l)/2);
-            //logger.info("Mid = {}", mid);
+            logger.info("Mid = {}", mid);
 
-            logger.info("Calling with l = {}, r = {}", l, mid);
+            //logger.info("Calling with l = {}, r = {}", l, mid);
             mergeSort(l, mid);
-            logger.info("Calling with l = {}, r = {}", (mid+1), r);
+            //logger.info("Calling with l = {}, r = {}", (mid+1), r);
             mergeSort(mid+1, r);
 
             merge(l, mid, r);
