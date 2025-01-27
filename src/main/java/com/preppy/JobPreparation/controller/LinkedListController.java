@@ -38,4 +38,10 @@ public class LinkedListController {
             @PathVariable("version") String version){
         return singleLinkedListVersions.deleteLast(version);
     }
+
+    @DeleteMapping("/deleteAt/{position}")
+    public ResponseEntity<LinearDataStructureResponse> deleteAt(
+            @PathVariable("version") String version, @PathVariable("position") int position){
+        return singleLinkedListVersions.deletePosition(version, position);
+    }
 }
