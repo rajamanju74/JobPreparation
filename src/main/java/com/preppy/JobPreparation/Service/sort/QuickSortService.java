@@ -39,7 +39,7 @@ public class QuickSortService {
     * for j = 3; value = 9 --> 9>5 nothing to do
     * for j = 4; value = 10 --> 10>5 nothing to do
     *
-    * Now the array looks like this 1 7 8 9 10 -> pivot = 5, i = 1
+    * Now the array looks like this 1 7 8 9 10 5 -> pivot = 5, i = 1
     * swap pivot, i+1
     * 1 5 8 9 10 7
     *
