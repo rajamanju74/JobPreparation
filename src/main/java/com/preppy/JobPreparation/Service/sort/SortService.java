@@ -19,6 +19,9 @@ public class SortService {
 
     @Autowired
     MergeSortService mergeSortService;
+
+    @Autowired
+    InsertionSortService insertionSortService;
     public ResponseEntity<SortResponse> doSort(SortRequest sortRequest){
         if(sortRequest.getMethod()=="selection") {
             return selectionSortService.sort(sortRequest);
@@ -26,9 +29,10 @@ public class SortService {
             return bubbleSortService.sort(sortRequest);
         }else if(sortRequest.getMethod().equals("merge")){
             return mergeSortService.sort(sortRequest);
-        }
-        else {
+        } else if(sortRequest.getMethod().equals("quick")){
             return quickSortService.sort(sortRequest);
+        }else{
+            return insertionSortService.sort(sortRequest);
         }
     }
 
